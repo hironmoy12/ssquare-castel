@@ -1,0 +1,243 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar--scrolled {
+  background: rgba(14, 14, 12, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+nav.navbar.navbar--scrolled .navbar__link {
+  color: var(--gold);
+}
+
+.navbar__inner {
+  width: min(100%, 1320px);
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar__logo img {
+  width: 150px;
+  height: auto;
+}
+
+.navbar__logo-main {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+}
+
+.navbar__logo-sub {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--cream-muted);
+  letter-spacing: 0.08em;
+}
+
+.navbar__links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  margin: 0 auto;
+}
+
+.navbar__link {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: gold;
+  transition: color 0.25s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--cream);
+}
+
+.navbar__link:hover::after,
+.navbar__link--active::after {
+  width: 100%;
+}
+
+.navbar__link--active {
+  color: #fff;
+}
+
+.navbar__cta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.navbar__phone {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 0.04em;
+  transition: color 0.25s ease;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.navbar__phone:hover {
+  color: var(--gold);
+}
+
+.navbar__hamburger {
+  display: none;
+  color: var(--cream);
+  padding: 0.5rem;
+  margin-left: auto;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar__mobile {
+  display: none;
+  flex-direction: column;
+  padding: 0 2rem;
+  background: rgba(14, 14, 12, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  gap: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.3s ease;
+}
+
+.navbar__mobile--open {
+  max-height: 500px;
+  padding: 1.5rem 2rem;
+}
+
+.navbar__mobile-link {
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-muted);
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: color 0.2s;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__mobile-link.active,
+.navbar__mobile-link:hover {
+  color: var(--gold);
+}
+
+/* Phone in mobile menu */
+.navbar__mobile-phone {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--cream);
+  font-weight: 600;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.navbar__mobile-phone svg {
+  color: var(--gold);
+}
+
+@media (max-width: 1024px) {
+  .navbar__links {
+    gap: 1.8rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar__links,
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__mobile {
+    display: flex;
+  }
+
+  .navbar__inner {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem 0;
+  }
+
+  .navbar--scrolled {
+    padding: 0.75rem 0;
+  }
+
+  .navbar__logo img {
+    width: 120px;
+  }
+
+  .navbar__inner {
+    padding: 0 1rem;
+  }
+
+  .navbar__mobile--open {
+    padding: 1rem 1rem;
+  }
+}
