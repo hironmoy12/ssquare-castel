@@ -150,7 +150,7 @@ nav.navbar.navbar--scrolled .navbar__link {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              padding 0.3s ease;
+    padding 0.3s ease;
 }
 
 .navbar__mobile--open {
@@ -202,9 +202,14 @@ nav.navbar.navbar--scrolled .navbar__link {
 }
 
 @media (max-width: 900px) {
+
   .navbar__links,
   .navbar__cta {
     display: none;
+  }
+
+  .navbar__mobile {
+    border: 0;
   }
 
   .navbar__hamburger {

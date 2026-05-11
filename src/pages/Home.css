@@ -1,3 +1,39 @@
+/* ── Hero Section ── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  /* use svh so mobile browser chrome doesn't count */
+  min-height: 480px;
+  overflow: hidden;
+  background: #0e0e0c;
+  /* fallback while video loads */
+}
+
+.hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 70svh;
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 60svh;
+    min-height: 300px;
+  }
+}
+
 video {
   object-fit: cover;
   width: 100%;
@@ -49,9 +85,10 @@ video {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
   section.section.container.two {
-padding: 0 16px;
-}
+    padding: 48px 16px;
+  }
 
 }
 
@@ -121,8 +158,8 @@ padding: 0 16px;
 
 @media (max-width: 900px) {
   .why-section__inner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    display: flex;
+    flex-direction: column-reverse;
   }
 }
 
@@ -1194,7 +1231,7 @@ padding: 0 16px;
 /* FAQ Section */
 .faq-section {
   background: var(--bg-primary);
-    padding-top: 80px;
+  padding-top: 80px;
 }
 
 .faq-header {
@@ -1370,8 +1407,9 @@ padding: 0 16px;
   }
 
   .one-square-content {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .why-section__inner {
@@ -1739,6 +1777,29 @@ padding: 0 16px;
   .cta-banner__actions {
     width: 100%;
     flex-direction: column;
+  }
+
+  /* Interior middle video */
+  .interior-video {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    /* removes inline gap under video */
+  }
+
+  .interior-video video {
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    object-fit: cover;
+    opacity: 1;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .interior-video video {
+      max-height: 320px;
+    }
   }
 
   /* Interior video */

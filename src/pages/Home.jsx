@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ShieldCheck, Target, Eye, Award, Users, Building2, Star } from "lucide-react";
 import { testimonials } from "../data/properties";
@@ -10,12 +10,36 @@ import "./Home.css";
 
 export default function Home() {
   const emiState = useEmiCalculator();
+  const servicesGridRef = useRef(null);
+
+  useEffect(() => {
+    const grid = servicesGridRef.current;
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll('.service-card');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('service-card--visible');
+            observer.unobserve(entry.target); // animate once
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <main className="home">
       {/* Hero */}
 
-      <video src="../assets/hero-sec-video.mp4" autoPlay muted loop />
+      <section className="hero">
+        <video src="/assets/hero-sec-video.mp4" autoPlay muted loop playsInline />
+      </section>
 
       {/* Testimonials */}
       <section className="testimonials-section">
@@ -31,7 +55,7 @@ export default function Home() {
           </h2>
           <div className="testimonials-grid">
             {testimonials.map((t) => (
-              <div className="testimonial" key={t.id}>
+              <div className="testimonial" key={t.id} data-aos="flip-down" data-aos-offset="100" data-aos-delay={200}>
                 <iframe
                   className="testimonial__video"
                   src={`https://www.youtube.com/embed/${t.videoId}`}
@@ -49,39 +73,42 @@ export default function Home() {
 
       {/* All Properties Preview */}
       <section className="section container two">
-        <div className="section__header">
-          <div>
-            <p className="section-label">Luxury Refined</p>
-            <h2 className="section-title">TWO SQUARE</h2>
-            <p className="one-square-content__kicker">
-              Luxury refined. Crafted for modern family living.
-            </p>
-          </div>
-        </div>
-        <div className="divider" />
+
         <div className="content one-square-content">
-          <div className="one-square-content__text">
-            <p>
-              Are you looking for luxury flats in Kharagpur that offer comfort,
-              convenience, and world-class amenities? Look no further than Two
-              Square by S Square Castle, a premium residential project located
-              in Barbetia, the most sought-after neighborhood in Kharagpur.
-              Designed to enhance your lifestyle, these 2 & 3 BHK apartments
-              provide the perfect balance of elegance, security, and modern
-              conveniences, making it the ideal home for families,
-              professionals, and investors alike.
-            </p>
-            <p>
-              At Two Square, every detail is meticulously planned to ensure a
-              luxurious and hassle-free living experience. Whether you seek
-              spacious interiors, premium amenities, or excellent connectivity,
-              this project has it all!
-            </p>
-            <Link to="/projects" className="btn-primary two-square">
-              Read More <ArrowRight size={14} />
-            </Link>
+          <div className="two-section-inner" data-aos="fade-left" data-aos-offset="100" data-aos-delay={50}>
+            <div className="section__header">
+              <div>
+                <p className="section-label">Luxury Refined</p>
+                <h2 className="section-title">TWO SQUARE</h2>
+                <p className="one-square-content__kicker">
+                  Luxury refined. Crafted for modern family living.
+                </p>
+              </div>
+            </div>
+            <div className="divider" />
+            <div className="one-square-content__text">
+              <p>
+                Are you looking for luxury flats in Kharagpur that offer comfort,
+                convenience, and world-class amenities? Look no further than Two
+                Square by S Square Castle, a premium residential project located
+                in Barbetia, the most sought-after neighborhood in Kharagpur.
+                Designed to enhance your lifestyle, these 2 & 3 BHK apartments
+                provide the perfect balance of elegance, security, and modern
+                conveniences, making it the ideal home for families,
+                professionals, and investors alike.
+              </p>
+              <p>
+                At Two Square, every detail is meticulously planned to ensure a
+                luxurious and hassle-free living experience. Whether you seek
+                spacious interiors, premium amenities, or excellent connectivity,
+                this project has it all!
+              </p>
+              <Link to="/projects" className="btn-primary two-square">
+                Read More <ArrowRight size={14} />
+              </Link>
+            </div>
           </div>
-          <div className="one-square-content__image">
+          <div className="one-square-content__image" data-aos="fade-right" data-aos-offset="100" data-aos-delay={50}>
             <img
               src="/assets/ssquarecastle06.jpeg"
               alt="S Square Castle residential building"
@@ -92,7 +119,7 @@ export default function Home() {
 
       <section className="why-section">
         <div className="why-section__inner container">
-          <div className="two-square-content__text">
+          <div className="two-square-content__text" data-aos="fade-left" data-aos-offset="100" data-aos-delay={50}>
             <p className="section-label">Elevate Your Lifestyle</p>
             <h2 className="section-title">THREE SQUARE</h2>
             <p className="two-square-content__kicker">
@@ -119,7 +146,7 @@ export default function Home() {
               Read More <ArrowRight size={14} />
             </Link>
           </div>
-          <div className="two-square-content__image">
+          <div className="two-square-content__image" data-aos="fade-right" data-aos-offset="100" data-aos-delay={50}>
             <img
               src="/assets/ssquarecastle07.jpeg"
               alt="Luxury flat living room"
@@ -148,7 +175,7 @@ export default function Home() {
           <div className="divider" />
           <div className="amenities-grid">
             {amenities.map(({ title, description, image, alt }) => (
-              <article className="amenity-card" key={title}>
+              <article className="amenity-card" key={title} data-aos="flip-left" data-aos-offset="100" data-aos-delay={200}>
                 <div className="amenity-card__image">
                   <img src={image} alt={alt} loading="lazy" />
                 </div>
@@ -183,9 +210,9 @@ export default function Home() {
             </p>
           </div>
           <div className="divider" />
-          <div className="services-grid">
+          <div className="services-grid" ref={servicesGridRef}>
             {services.map(({ title, description, image, alt }) => (
-              <article className="service-card" key={title}>
+              <article className="service-card" key={title} data-aos="flip-up" data-aos-offset="100" data-aos-delay={500}>
                 <div className="service-card__image">
                   <img src={image} alt={alt} loading="lazy" />
                 </div>
@@ -215,7 +242,7 @@ export default function Home() {
 
       <section className="site-plan-section">
         <div className="site-plan-section__inner container">
-          <div className="site-plan-section__content">
+          <div className="site-plan-section__content" data-aos="fade-left" data-aos-offset="100" data-aos-delay={50}>
             <p className="section-label">Two Square</p>
             <h2 className="section-title">Site Plan</h2>
             <div className="divider" />
@@ -238,7 +265,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="site-plan-section__image">
+          <div className="site-plan-section__image" data-aos="fade-right" data-aos-offset="100" data-aos-delay={50}>
             <img
               src="/assets/site-plane.png"
               alt="Two Square architectural site plan"
@@ -248,9 +275,9 @@ export default function Home() {
         </div>
       </section>
 
-       <section className="floor-plan-section">
+      <section className="floor-plan-section">
         <div className="floor-section__inner container">
-          <div className="floor-section__content">
+          <div className="floor-section__content" data-aos="fade-left" data-aos-offset="100" data-aos-delay={50}>
             <p className="section-label">Two Square</p>
             <h2 className="section-title">Floor Plan</h2>
             <div className="divider" />
@@ -269,7 +296,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="floor-section__image">
+          <div className="floor-section__image" data-aos="fade-right" data-aos-offset="100" data-aos-delay={50}>
             <img
               src="/assets/floor-plan.png"
               alt="Two Square luxury apartment floor plans - 2 BHK and 3 BHK layouts"
@@ -396,7 +423,7 @@ export default function Home() {
       {/* FAQ Section */}
       <FaqSection />
 
-     </main>
+    </main>
   );
 }
 
