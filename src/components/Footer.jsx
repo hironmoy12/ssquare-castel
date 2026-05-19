@@ -69,7 +69,7 @@ export default function Footer() {
 
       <div className="footer__bottom">
         <div className="container">
-          <p>© {new Date().getFullYear()} LUXE Estate. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Eesan Construction All rights reserved.</p>
           <div className="footer__legal">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
