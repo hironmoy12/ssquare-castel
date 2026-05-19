@@ -1725,6 +1725,11 @@ video {
     font-size: 0.65rem;
   }
 
+  .about-us-stats {
+    width: 200px;
+    right: auto;
+  }
+
   .about-us-accent-line {
     margin: 1rem 0 1.25rem;
   }

@@ -18,13 +18,35 @@ export default function Navbar() {
     setMenuOpen(false)
   }, [location])
 
+  useEffect(() => {
+    if (location.pathname === '/' && !location.hash) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+
+    if (!location.hash) return
+
+    const target = document.getElementById(location.hash.slice(1))
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [location.pathname, location.hash])
+
   const navLinks = [
     { path: '/', label: 'Home' },
-    { path: '/home', label: 'Projects' },
-    { path: '/home', label: 'About' },
-    { path: '/home', label: 'Construction' },
-    { path: '/home', label: 'Contact' },
+    { path: '/#projects', label: 'Projects' },
+    { path: '/#about', label: 'About' },
+    { path: '/#construction', label: 'Construction' },
+    { path: '/#contact', label: 'Contact' },
   ]
+
+  const isActiveLink = (path) => {
+    if (path === '/') {
+      return location.pathname === '/' && !location.hash
+    }
+
+    return `${location.pathname}${location.hash}` === path
+  }
 
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
@@ -38,7 +60,7 @@ export default function Navbar() {
             <li key={link.path}>
               <Link
                 to={link.path}
-                className={`navbar__link ${location.pathname === link.path ? 'navbar__link--active' : ''}`}
+                className={`navbar__link ${isActiveLink(link.path) ? 'navbar__link--active' : ''}`}
               >
                 {link.label}
               </Link>
@@ -69,7 +91,7 @@ export default function Navbar() {
           <Link
             key={link.path}
             to={link.path}
-            className={`navbar__mobile-link ${location.pathname === link.path ? 'active' : ''}`}
+            className={`navbar__mobile-link ${isActiveLink(link.path) ? 'active' : ''}`}
           >
             {link.label}
           </Link>

@@ -51,11 +51,17 @@ export default function Home() {
             className="section-title"
             style={{ textAlign: "center", marginBottom: "3rem" }}
           >
-            Testimonals <em>That Speak Volumes</em>
+            Testimonials <em>That Speak Volumes</em>
           </h2>
           <div className="testimonials-grid">
-            {testimonials.map((t) => (
-              <div className="testimonial" key={t.id} data-aos="flip-down" data-aos-offset="100" data-aos-delay={200}>
+            {testimonials.map((t, index) => (
+              <div
+                className="testimonial"
+                key={t.id}
+                data-aos="flip-down"
+                data-aos-offset="100"
+                data-aos-delay={200 + index * 100}
+              >
                 <iframe
                   className="testimonial__video"
                   src={`https://www.youtube.com/embed/${t.videoId}`}
@@ -72,10 +78,10 @@ export default function Home() {
       </section>
 
       {/* All Properties Preview */}
-      <section className="section container two">
+      <section id="projects" className="section container two">
 
         <div className="content one-square-content">
-          <div className="two-section-inner" data-aos="fade-left" data-aos-offset="100" data-aos-delay={50}>
+          <div className="two-section-inner" data-aos="fade-up-right" data-aos-offset="100" data-aos-delay={250}>
             <div className="section__header">
               <div>
                 <p className="section-label">Luxury Refined</p>
@@ -108,7 +114,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="one-square-content__image" data-aos="fade-right" data-aos-offset="100" data-aos-delay={50}>
+          <div className="one-square-content__image" data-aos="fade-up-left" data-aos-offset="100" data-aos-delay={250}>
             <img
               src="/assets/ssquarecastle06.jpeg"
               alt="S Square Castle residential building"
@@ -119,7 +125,7 @@ export default function Home() {
 
       <section className="why-section">
         <div className="why-section__inner container">
-          <div className="two-square-content__text" data-aos="fade-left" data-aos-offset="100" data-aos-delay={50}>
+          <div className="two-square-content__text" data-aos="fade-up-left" data-aos-offset="100" data-aos-delay={50}>
             <p className="section-label">Elevate Your Lifestyle</p>
             <h2 className="section-title">THREE SQUARE</h2>
             <p className="two-square-content__kicker">
@@ -146,7 +152,7 @@ export default function Home() {
               Read More <ArrowRight size={14} />
             </Link>
           </div>
-          <div className="two-square-content__image" data-aos="fade-right" data-aos-offset="100" data-aos-delay={50}>
+          <div className="two-square-content__image" data-aos="fade-up-right" data-aos-offset="100" data-aos-delay={50}>
             <img
               src="/assets/ssquarecastle07.jpeg"
               alt="Luxury flat living room"
@@ -175,7 +181,7 @@ export default function Home() {
           <div className="divider" />
           <div className="amenities-grid">
             {amenities.map(({ title, description, image, alt }) => (
-              <article className="amenity-card" key={title} data-aos="flip-left" data-aos-offset="100" data-aos-delay={200}>
+              <article className="amenity-card" key={title} data-aos="flip-left" data-aos-offset="100" data-aos-delay={250}>
                 <div className="amenity-card__image">
                   <img src={image} alt={alt} loading="lazy" />
                 </div>
@@ -194,7 +200,7 @@ export default function Home() {
         <video src="./assets/middle-video.mp4" autoPlay muted loop></video>
       </section>
 
-      <section className="services-section">
+      <section id="construction" className="services-section">
         <div className="container">
           <div className="services-section__header">
             <div>
@@ -242,7 +248,7 @@ export default function Home() {
 
       <section className="site-plan-section">
         <div className="site-plan-section__inner container">
-          <div className="site-plan-section__content" data-aos="fade-left" data-aos-offset="100" data-aos-delay={50}>
+          <div className="site-plan-section__content" data-aos="fade-left" data-aos-offset="100" data-aos-delay={250}>
             <p className="section-label">Two Square</p>
             <h2 className="section-title">Site Plan</h2>
             <div className="divider" />
@@ -265,7 +271,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="site-plan-section__image" data-aos="fade-right" data-aos-offset="100" data-aos-delay={50}>
+          <div className="site-plan-section__image" data-aos="fade-right" data-aos-offset="100" data-aos-delay={250}>
             <img
               src="/assets/site-plane.png"
               alt="Two Square architectural site plan"
@@ -277,7 +283,7 @@ export default function Home() {
 
       <section className="floor-plan-section">
         <div className="floor-section__inner container">
-          <div className="floor-section__content" data-aos="fade-left" data-aos-offset="100" data-aos-delay={50}>
+          <div className="floor-section__content" data-aos="fade-left" data-aos-offset="100" data-aos-delay={250}>
             <p className="section-label">Two Square</p>
             <h2 className="section-title">Floor Plan</h2>
             <div className="divider" />
@@ -296,7 +302,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="floor-section__image" data-aos="fade-right" data-aos-offset="100" data-aos-delay={50}>
+          <div className="floor-section__image" data-aos="fade-right" data-aos-offset="100" data-aos-delay={250}>
             <img
               src="/assets/floor-plan.png"
               alt="Two Square luxury apartment floor plans - 2 BHK and 3 BHK layouts"
@@ -328,9 +334,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="about-us-section">
+      <section id="about" className="about-us-section">
         {/* Left image panel */}
-        <div className="about-us-image-panel">
+        <div className="about-us-image-panel" data-aos="fade-up-left" data-aos-offset="100" data-aos-delay={250}>
           <img
             src="/assets/ssquarecastle06.jpeg"
             alt="Eesan Construction premium residential project"
@@ -369,7 +375,7 @@ export default function Home() {
         </div>
 
         {/* Right content panel */}
-        <div className="about-us-content-panel">
+        <div className="about-us-content-panel" data-aos="fade-up-right" data-aos-offset="100" data-aos-delay={250}>
           <p className="section-label">About Us</p>
           <h2 className="section-title">
             Eesan <em>Construction</em>

@@ -175,10 +175,10 @@ export const stats = [
 ];
 
 export const testimonials = [
-  { id: 1, videoId: 'vyNqSJNLrMg', title: 'Client story 1' },
-  { id: 2, videoId: '-GCYerxKXIc', title: 'Client story 2' },
-  { id: 3, videoId: 'up4nx_L91F0', title: 'Client story 3' },
-  { id: 4, videoId: 'vHtDPJmA7i4', title: 'Client story 4' },
-  { id: 5, videoId: 'cxNWj_CT16A', title: 'Client story 5' },
-  { id: 6, videoId: 'vaGfuYSsobo', title: 'Client story 6' },
+  { id: 1, videoId: 'GV2QZbMO0CM', title: 'Client story 1' },
+  { id: 2, videoId: '2ABFuMGkp9k', title: 'Client story 2' },
+  { id: 3, videoId: '3thtcSII1go', title: 'Client story 3' },
+  { id: 4, videoId: 'cpcS9MVN38Y', title: 'Client story 4' },
+  { id: 5, videoId: 'Kl7L8-EFpws', title: 'Client story 5' },
+  { id: 6, videoId: 'RghDUnz3kfI', title: 'Client story 6' },
 ];

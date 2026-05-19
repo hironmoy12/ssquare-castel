@@ -4,7 +4,7 @@ import './Footer.css'
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer id="contact" className="footer">
       <div className="footer__top">
         <div className="container">
           <div className="footer__grid">
@@ -38,19 +38,19 @@ export default function Footer() {
               <h4 className="footer__col-title">Company</h4>
               <ul className="footer__links">
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/projects">Projects</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/construction">Construction</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
+                <li><Link to="/#projects">Projects</Link></li>
+                <li><Link to="/#about">About</Link></li>
+                <li><Link to="/#construction">Construction</Link></li>
+                <li><Link to="/#contact">Contact</Link></li>
               </ul>
             </div>
 
             <div className="footer__col">
               <h4 className="footer__col-title">Our Projects</h4>
               <ul className="footer__links">
-                <li><Link to="/projects">One Square</Link></li>
-                <li><Link to="/projects">Two Square</Link></li>
-                <li><Link to="/projects">Three Square</Link></li>
+                <li><Link to="/#projects">One Square</Link></li>
+                <li><Link to="/#projects">Two Square</Link></li>
+                <li><Link to="/#projects">Three Square</Link></li>
               </ul>
             </div>
 
