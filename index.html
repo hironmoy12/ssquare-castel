@@ -8,9 +8,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+      /* Critical inline CSS – visible instantly before JS bundle loads */
+      body {
+        margin: 0;
+        background-color: #0e0e0c;
+        overflow-x: hidden;
+      }
+      #root:empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        min-height: 100svh;
+      }
+      #root:empty::after {
+        content: '';
+        width: 36px;
+        height: 36px;
+        border: 2px solid rgba(201, 169, 110, 0.2);
+        border-top-color: #c9a96e;
+        border-radius: 50%;
+        animation: _spin 0.7s linear infinite;
+      }
+      @keyframes _spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+

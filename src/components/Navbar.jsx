@@ -52,7 +52,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__inner">
         <Link to="/" className="navbar__logo">
-          <img src="./assets/castle-logo.png" alt="" width={150}/>
+          <img src="/assets/castle-logo.png" alt="" width={150}/>
         </Link>
 
         <ul className="navbar__links">

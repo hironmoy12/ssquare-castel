@@ -197,7 +197,7 @@ export default function Home() {
       </section>
 
       <section className="interior-video">
-        <video src="./assets/middle-video.mp4" autoPlay muted loop></video>
+        <video src="/assets/middle-video.mp4" autoPlay muted loop playsInline></video>
       </section>
 
       <section id="construction" className="services-section">
